@@ -14,10 +14,13 @@ routes = [
 # or via the command line: wrangler kv:namespace create SHORTY_LINKS
 # Then, add the preview_id and id obtained from the command output below.
 [[kv_namespaces]]
-binding = "shorty" # This is the variable name used in worker.js (env.SHORTY_LINKS)
+binding = "SHORTY_LINKS" # This is the variable name used in worker.js (env.SHORTY_LINKS)
 id = "fccb4c183192452786dfaac176e18fb1" # Your Production KV namespace ID
 preview_id = "" # Preview ID was not provided, leave empty for now
 
+[vars]
+FRONTEND_DOMAIN = "https://shorty.rzsite.my.id"
+SHORT_DOMAIN = "https://rzsite.my.id"
 # Optional: Add site configuration if you plan to serve index.html via the worker directly
 # [site]
 # bucket = "./" # Directory containing your static assets (like index.html)
