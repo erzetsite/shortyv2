@@ -42,7 +42,7 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
     const method = request.method;
-    // Note: Hostname check is removed as wrangler.toml now routes only api.shorty.lkly.net/* to this worker.
+    // Note: Hostname check is removed as wrangler.toml now routes only api.shorty.rzsite.my.id/* to this worker.
 
     // Handle CORS preflight requests for API endpoints
     if (method === 'OPTIONS' && (path.startsWith('/api/'))) {
@@ -362,7 +362,7 @@ export default {
     }
 
     // Handle Redirects (Any path that isn't /api/*)
-    // This logic runs because the Page Rule forwards lkly.net/+<id> to api.shorty.lkly.net/+<id>
+    // This logic runs because the Page Rule forwards rzsite.my.id/+<id> to api.shorty.rzsite.my.id/+<id>
     else if (!path.startsWith('/api/')) {
       // Check if the path starts with /+ and extract the ID after it
       let shortId = null;
@@ -371,9 +371,9 @@ export default {
       }
 
       if (!shortId) {
-          // If someone accesses api.shorty.lkly.net/ or api.shorty.lkly.net/something_else
+          // If someone accesses api.shorty.rzsite.my.id/ or api.shorty.rzsite.my.id/something_else
           // show a message or handle as appropriate.
-          return new Response('Shorty API Endpoint. Use shorty.lkly.net for the frontend.', { status: 200 });
+          return new Response('Shorty API Endpoint. Use shorty.rzsite.my.id for the frontend.', { status: 200 });
       }
 
       try {
@@ -412,7 +412,7 @@ export default {
       }
     }
 
-    // Fallback for any other requests to api.shorty.lkly.net (e.g. /api/unknown)
+    // Fallback for any other requests to api.shorty.rzsite.my.id (e.g. /api/unknown)
     else {
          // Pass env to errorResponse
         return errorResponse('API endpoint not found.', 404, {}, env); // Pass empty headers and env
