@@ -15,7 +15,7 @@ routes = [
 # Then, add the preview_id and id obtained from the command output below.
 [[kv_namespaces]]
 binding = "SHORTY_LINKS" # This is the variable name used in worker.js (env.SHORTY_LINKS)
-id = "fccb4c183192452786dfaac176e18fb1" # Your Production KV namespace ID
+id = "6752242b48274a0ca9a24fdc3a8f1af8" # Your Production KV namespace ID
 preview_id = "" # Preview ID was not provided, leave empty for now
 
 [vars]
