@@ -207,12 +207,17 @@
         showToggleMessage: false,
 
         initDarkMode() {
-          this.isDarkMode = document.documentElement.classList.contains('dark');
-        },
-        toggleDarkMode() {
-          this.isDarkMode = !this.isDarkMode;
-          this.applyDarkMode();
-          localStorage.setItem('darkMode', this.isDarkMode);
+  // 1. Ambil preferensi yang tersimpan
+  const stored = localStorage.getItem('darkMode');
+  // 2. Jika belum ada, pakai sistem
+  if (stored === null) {
+    this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    localStorage.setItem('darkMode', this.isDarkMode); // simpan default
+  } else {
+    this.isDarkMode = stored === 'true';
+  }
+  this.applyDarkMode();
+},
           this.toggleClickCount++;
           if (this.toggleClickTimer) clearTimeout(this.toggleClickTimer);
           if (this.toggleClickCount >= 5) {
